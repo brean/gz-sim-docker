@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  gz_sim:
+    # gazebo installation for the robot
+    image: brean/gz_sim_garden:humble
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        ROS_DISTRO: humble
+        GZ_VERSION: garden
+    runtime: nvidia
+    environment: 
+      - PYTHONUNBUFFERED=1 # important to show error messages if a ros service crashes!
+      - DISPLAY # for UI
+      - QT_X11_NO_MITSHM=1 #fix some QT bugs
+      - NVIDIA_VISIBLE_DEVICES=all # for docker-nvidia2
+      - NVIDIA_DRIVER_CAPABILITIES=all # for docker-nvidia2
+      - XDG_RUNTIME_DIR 
+      - __NV_PRIME_RENDER_OFFLOAD=1
+      - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      - XAUTHORITY=$XAUTHORITY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw  # for UI
+      - /run/user:/run/user:ro  # for UI
+    privileged: true  # for UI
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
