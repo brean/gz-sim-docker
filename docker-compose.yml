@@ -3,7 +3,7 @@ version: '3'
 services:
   gz_sim:
     # gazebo installation for the robot
-    image: brean/gz_sim_garden:humble
+    image: brean/gz_sim:garden-humble
     build:
       context: ./
       dockerfile: ./Dockerfile
