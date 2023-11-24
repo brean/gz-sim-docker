@@ -7,7 +7,7 @@ ENV PYTHONWARNINGS="ignore:setup.py install is deprecated::setuptools.command.in
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# see https://gazebosim.org/docs/garden/install_ubuntu
+# see https://gazebosim.org/docs/harmonic/install_ubuntu
 ARG GZ_VERSION
 
 RUN apt-get update -qq \

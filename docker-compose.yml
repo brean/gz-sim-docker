@@ -3,13 +3,13 @@ version: '3'
 services:
   gz_sim:
     # gazebo installation for the robot
-    image: brean/gz_sim:garden-humble
+    image: brean/gz_sim:harmonic-humble
     build:
       context: ./
       dockerfile: ./Dockerfile
       args:
         ROS_DISTRO: humble
-        GZ_VERSION: garden
+        GZ_VERSION: harmonic
     runtime: nvidia
     environment: 
       - PYTHONUNBUFFERED=1 # important to show error messages if a ros service crashes!

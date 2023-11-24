@@ -4,7 +4,7 @@ Base docker container for Gazebo on top of ROS using NVIDIA runtime.
 ## Usage
 You can build your own Docker container using:
 ```Dockerfile
-FROM brean/gz_sim_garden:humble
+FROM brean/gz_sim_harmonic:humble
 ```
 to build your docker environment.
 
@@ -18,7 +18,7 @@ docker compose run gz_sim
 or if you don't have a configured docker-compose.yml file
 ```bash
 xhost +local:root
-docker run -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw --privileged brean/gz_sim:garden-humble
+docker run -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw --privileged brean/gz_sim:harmonic-humble
 ```
 (see "./sim-docker.bash")
 
