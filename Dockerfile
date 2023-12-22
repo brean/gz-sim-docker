@@ -29,6 +29,7 @@ RUN apt-get update -qq \
         libgz-math7-dev\
         libgz-transport12-dev\
         libgflags-dev\
+        ros-${ROS_DISTRO}-vision-msgs\
         ros-${ROS_DISTRO}-actuator-msgs\
         ros-${ROS_DISTRO}-image-transport\
     && rm -rf /var/lib/apt/lists/*
