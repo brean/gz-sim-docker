@@ -21,23 +21,18 @@ RUN wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pk
 RUN apt-get update -qq \
     && apt-get install -y \
         gz-${GZ_VERSION} \
-        ament-cmake\
         build-essential\
         ros-${ROS_DISTRO}-rcl-interfaces\
         ros-${ROS_DISTRO}-rclcpp\
         ros-${ROS_DISTRO}-builtin-interfaces\
-        libgz-math7-dev\
-        libgz-transport12-dev\
-        libgflags-dev\
+        ros-${ROS_DISTRO}-ros-gz\
+        ros-${ROS_DISTRO}-sdformat-urdf\
         ros-${ROS_DISTRO}-vision-msgs\
         ros-${ROS_DISTRO}-actuator-msgs\
         ros-${ROS_DISTRO}-image-transport\
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ${COLCON_WS_SRC}\
-    && cd ${COLCON_WS_SRC}\
-    && git clone https://github.com/gazebosim/ros_gz.git -b humble\
-    && git clone https://github.com/ros/sdformat_urdf.git -b ros2\
     && cd ${COLCON_WS}\
     && . /opt/ros/${ROS_DISTRO}/setup.sh\
     && colcon build
